@@ -9,6 +9,29 @@ public class day2 {
         }
         return sum;
     }
+    public int GetDivsum(String input) throws Exception {
+        int[][] spreadsheet = ParseInput(input);
+        int sum = 0;
+        for (int i = 0; i < 16; i++) {
+            sum+= getDivsum(spreadsheet[i]);
+        }
+        return sum;
+    }
+
+    private int getDivsum(int[] ints) throws Exception {
+        for (int i = 0; i < ints.length-1; i++) {
+            for (int j = i+1; j < ints.length; j++) {
+
+                if (ints[j]%ints[i]==0){
+                    return ints[j]/ints[i];
+                }
+                else if(ints[i]%ints[j]==0){
+                    return ints[i]/ints[j];
+                }
+            }
+        }
+        throw new Exception();
+    }
 
     private int getChecksum(int[] ints) {
         var high = Integer.MIN_VALUE;
