@@ -3,6 +3,18 @@ package sb.adventofcode.seventeen.days;
 public class day1 {
     public int Max = 0;
     public int Half = 0;
+    public int GetPart2(String input){
+        int[] ints = ParseInput(input);
+        int sum = 0;
+        int i = 0;
+        while(i<Half){
+            if (DoesHalfMatch(ints,i)){
+                sum+=(ints[i]*2);
+            }
+            i++;
+        }
+        return sum;
+    }
     public int GetSolution(String input){
         int[] ints = ParseInput(input);
         int sum =0;
@@ -36,6 +48,11 @@ public class day1 {
             res++;
         }
         return res;
+    }
+    public boolean DoesHalfMatch(int[] arr, int idx){
+        int toMatch = arr[idx];
+        int other = arr[idx+Half];
+        return toMatch==other;
     }
 
 }
